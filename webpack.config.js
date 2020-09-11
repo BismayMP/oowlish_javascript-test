@@ -1,30 +1,36 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
 
 
 module.exports = {
+  context: __dirname,
   entry: './src/index.js',
-  plugins: [new HtmlWebpackPlugin(), new MiniCssExtractPlugin()],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  plugins: [new HtmlWebpackPlugin()],
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+
       },
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|j?g|svg|gif)?$/,
+        use: 'file-loader'
+      }
     ],
   },
   resolve: {
-    extensions: ['*', '.js'],
-  },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js',
+    extensions: ['*', '.js', '.jsx'],
   },
   devServer: {
     contentBase: './dist',

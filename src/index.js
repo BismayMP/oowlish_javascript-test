@@ -2,9 +2,9 @@ import "./index.css";
 import React from "react";
 import ReactDOM from 'react-dom';
 import Filter from "./components/Filter";
-import { AddOnClick } from "./utils";
+import { AddOnClickAndInitialStyle } from "./utils";
 
-const table = document.getElementById('doctors').children
+export const table = document.getElementById('doctors').children
 const availableFilter = document.getElementById('availabilityFilterSelect')
 export const doctors = []
 
@@ -25,10 +25,9 @@ fetch('http://localhost:3030/doctors')
     .then(response => {
         doctors.push(...response)
         availableFilter.onchange = (event) => handleAvailableFilterChange(event)
+
     },
         (error => console.log(error)))
-
-AddOnClick(table, doctors)
-
+AddOnClickAndInitialStyle(table, doctors)
 
 ReactDOM.render(<Filter table={table}></Filter>, document.getElementById('searchContainer'))

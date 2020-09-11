@@ -1,11 +1,12 @@
-import {doctors} from './index'
+import { doctors } from './index'
 
-export const AddOnClick = (table) => {
-    let availableList = doctors.filter(res => res.available).map(item => `${item.upin}`)
-    for (let tr of table){
-        tr.querySelector('button').onclick = (event) => {
+export const AddOnClickAndInitialStyle = (table) => {
+    for (let tr of table) {
+        const btn = tr.querySelector('button')
+        btn.onclick = (event) => {
             handleOnClick(tr, event)
         }
+        (btn.innerText === 'MARK AS UNAVAILABLE') ? tr.setAttribute('class', 'available') : tr.setAttribute('class', 'unavailable')
     }
 }
 
@@ -14,13 +15,20 @@ const handleOnClick = (tr, event) => {
     //available
     if (availableList.includes(tr.getAttribute('data-upin'))) {
         //set to unavailable 
+        tr.setAttribute('class', 'unavailable')
         doctors.find(doc => `${doc.upin}` === tr.getAttribute('data-upin')).available = false
-        event.target.innerText = 'Mark as Available'
-    } 
+        event.target.innerText = 'MARK AS AVAILABLE'
+    }
     //unavailable
     if (!availableList.includes(tr.getAttribute('data-upin'))) {
-         //set to available
-         doctors.find(doc => `${doc.upin}` === tr.getAttribute('data-upin')).available = true
-         event.target.innerText = 'Mark as Unavailable'
+        //set to available
+        tr.setAttribute('class', 'available')
+        doctors.find(doc => `${doc.upin}` === tr.getAttribute('data-upin')).available = true
+        event.target.innerText = 'MARK AS UNAVAILABLE'
     }
+}
+
+const changeStyle = (table) => {
+    let list = doctors.filter(res => res.available).map(item => console.log('fucking hate this shit'))//`${item.upin}`)
+
 }

@@ -3,3 +3,22 @@
   padding-bottom: 7.5rem;
   padding-top: 7.5rem;
 }
+button[innerText='Mark as Unavailable'] {
+  background-color: blue;
+  background: rgb(204, 156, 156);
+}
+
+tr[class='available']:hover {
+  background: rgb(150, 214, 148);
+}
+
+tr[class='unavailable']:hover {
+  background: rgb(214, 148, 154);
+}
+
+.unavailable {
+  background: whitesmoke;
+}
+.available {
+  background: white;
+}

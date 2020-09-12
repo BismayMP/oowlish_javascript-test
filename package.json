@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack --mode development",
+    "test": "jest -u",
     "start:server": "json-server --watch ./db/data.json --port 3030 --id ./db/ids.json",
     "start:client": "webpack-dev-server --config ./webpack.config.js --mode development --open",
     "start": "concurrently --kill-others \"yarn start:server\" \"yarn start:client\""
@@ -17,11 +18,15 @@
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.10.4",
+    "@testing-library/react": "^11.0.2",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "concurrently": "^5.3.0",
     "css-loader": "^4.3.0",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.4.2",
     "path": "^0.12.7",
+    "react-test-renderer": "^16.13.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"

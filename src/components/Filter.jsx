@@ -10,7 +10,6 @@ const Filter = ({ table }) => {
     }
 
     const applyFilterToTable = () => {
-        console.log(state)
         for (let tr of table) {
             (`${tr.getAttribute('data-upin')}`.includes(state.UPIN) &&
                 tr.cells[0].textContent.toLowerCase().includes(state.name))

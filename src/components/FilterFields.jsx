@@ -2,14 +2,6 @@ import React, { useState } from 'react';
 
 const FilterFields = ({ name, UPIN, onFilterChange }) => {
 
-/*    const OnFilterChange = (event) => {
-        const { name, value } = event.target;
-        setState({ ...state, [name]: value.toLowerCase() })
-        console.log(state)
-        applyFilterToTable()
-
-    }
-*/
     return (
         <>
                 <input

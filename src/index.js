@@ -24,10 +24,11 @@ fetch('http://localhost:3030/doctors')
     .then(response => response.json())
     .then(response => {
         doctors.push(...response)
-        availableFilter.onchange = (event) => handleAvailableFilterChange(event)
 
     },
         (error => console.log(error)))
+
+availableFilter.onchange = (event) => handleAvailableFilterChange(event)
 AddOnClickAndInitialStyle(table, doctors)
 
 ReactDOM.render(<Filter table={table}></Filter>, document.getElementById('searchContainer'))

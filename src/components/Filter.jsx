@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import FilterFields from './Filterfields';
 
 const Filter = ({ table }) => {
     const [state, setState] = useState({ name: '', UPIN: '' });
 
-    const OnFilterChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.value })
+    const handleOnFilterChange = (event) => {
+        const { name, value } = event.target;
+        setState({ ...state, [name]: value.toLowerCase() })
+    }
+
+    const applyFilterToTable = () => {
+        console.log(state)
         for (let tr of table) {
-                (`${tr.getAttribute('data-upin')}`.includes(state.UPIN) && 
-                `${tr.cells[0].textContent}`.includes(state.name))
+            (`${tr.getAttribute('data-upin')}`.includes(state.UPIN) &&
+                tr.cells[0].textContent.toLowerCase().includes(state.name))
                 ? tr.removeAttribute('hidden') : tr.setAttribute('hidden', "")
 
         }
@@ -15,18 +21,15 @@ const Filter = ({ table }) => {
 
     return (
         <>
-            <input
-                type="text"
-                name='name'
-                placeholder='Name'
-                onChange={OnFilterChange}>
-            </input>
-            <input
-                type="text"
-                name='UPIN'
-                placeholder='UPIN'
-                onChange={OnFilterChange}>
-            </input>
+            <FilterFields
+                name={state.name}
+                UPIN={state.UPIN}
+                onFilterChange={handleOnFilterChange}
+            />
+
+            {
+                applyFilterToTable()
+            }
         </>
     )
 }

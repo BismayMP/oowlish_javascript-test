@@ -27,8 +27,3 @@ const handleOnClick = (tr, event) => {
         event.target.innerText = 'MARK AS UNAVAILABLE'
     }
 }
-
-const changeStyle = (table) => {
-    let list = doctors.filter(res => res.available).map(item => console.log('fucking hate this shit'))//`${item.upin}`)
-
-}

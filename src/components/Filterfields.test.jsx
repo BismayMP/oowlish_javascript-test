@@ -2,7 +2,7 @@
 import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import renderer from 'react-test-renderer';
-import FilterFields from './Filterfields';
+import FilterFields from './FilterFields';
 
 afterEach(cleanup);
 test('Component render', () => {

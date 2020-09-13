@@ -1,16 +1,20 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
 
 
 module.exports = {
-  context: __dirname,
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [new HtmlWebpackPlugin({
+    filename: 'index.html',
+    inject: true,
+    template: path.resolve(__dirname, 'dist', 'index.html'),
+  }), new CleanWebpackPlugin()],
   module: {
     rules: [
       {
@@ -31,8 +35,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
-  },
-  devServer: {
-    contentBase: './dist',
-  },
+  }
 };

@@ -57,3 +57,57 @@ Extra points for:
 - Using some modern javascript framework (React, Angular, VueJS)
 
 Having that said, good luck and happy coding!
+
+## Getting started
+
+Getting this app ready will be easy, just need a docker engine that you can get here:
+´´´
+<https://docs.docker.com/get-docker/>
+
+´´´
+
+# Running our unit test
+
+First you need to build the image, for testing purposes use the ´´TEST´´ stage, running:
+´´´
+docker build --target TEST -t test-image .
+
+´´´
+
+and then run the recently build image:
+´´´
+docker run test-image
+
+´´´
+
+# Running our app on development mode
+
+First you need to build the image, use the ´´DEV´´ stage for development, running:
+´´´
+docker build --target DEV -t dev-image .
+
+´´´
+
+and then run the recently build image:
+´´´
+docker run dev-image
+
+´´´
+
+# Running our app on production mode
+
+First you need to build the image, use the ´´PROD´´ stage for production, running:
+´´´
+docker build --target PROD -t prod-image .
+
+´´´
+
+and then run the recently build image:
+´´´
+docker run prod-image
+
+´´´
+
+# About the app
+
+This app is using reactjs[https://reactjs.org/] and javascript as main technologies, for testing purpose we use jest[https://jestjs.io/en/] and docker[https://www.docker.com/] for an easy deployment

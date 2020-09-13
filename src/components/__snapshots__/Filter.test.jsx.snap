@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component render 1`] = `
+Array [
+  <FilterFields
+    UPIN=""
+    name=""
+    onFilterChange={[Function]}
+  />,
+  "undefined is not iterable (cannot read property Symbol(Symbol.iterator))",
+]
+`;

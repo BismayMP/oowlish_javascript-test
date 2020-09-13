@@ -61,52 +61,48 @@ Having that said, good luck and happy coding!
 ## Getting started
 
 Getting this app ready will be easy, just need a docker engine that you can get here:
-´´´
-<https://docs.docker.com/get-docker/>
 
-´´´
+```
+<https://docs.docker.com/get-docker/>
+```
+
+For development and testing proposes, run:
+
+```
+yarn install
+```
+
+in the terminal
 
 # Running our unit test
 
-First you need to build the image, for testing purposes use the ´´TEST´´ stage, running:
-´´´
-docker build --target TEST -t test-image .
+To execute the unit test run:
 
-´´´
+```
+yarn test
+```
 
-and then run the recently build image:
-´´´
-docker run test-image
+# Running a development server
 
-´´´
+To start de development server run :
 
-# Running our app on development mode
-
-First you need to build the image, use the ´´DEV´´ stage for development, running:
-´´´
-docker build --target DEV -t dev-image .
-
-´´´
-
-and then run the recently build image:
-´´´
-docker run dev-image
-
-´´´
+```
+yarn start:dev
+```
 
 # Running our app on production mode
 
 First you need to build the image, use the ´´PROD´´ stage for production, running:
-´´´
-docker build --target PROD -t prod-image .
 
-´´´
+```
+docker build -t prod-image .
+```
 
 and then run the recently build image:
-´´´
-docker run prod-image
 
-´´´
+```
+docker run prod-image
+```
 
 # About the app
 

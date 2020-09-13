@@ -5,13 +5,17 @@ import Filter from "./components/Filter";
 import { AddOnClickAndInitialStyle } from "./utils";
 
 export const table = document.getElementById('doctors').children
-const availableFilter = document.getElementById('availabilityFilterSelect')
+export const availableFilter = document.getElementById('availabilityFilterSelect')
 export const doctors = []
 
 const handleAvailableFilterChange = (event) => {
+    availableFilterFun(event.target.value)
+}
+
+export const availableFilterFun = (value = availableFilter.value) => {
     let availableList = doctors.filter(res => res.available).map(item => `${item.upin}`)
     for (let tr of table) {
-        if (event.target.value === 'available') {
+        if (value === 'available') {
             if (!availableList.includes(tr.getAttribute('data-upin')))
                 tr.setAttribute('hidden', '')
         } else {

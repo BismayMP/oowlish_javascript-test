@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { availableFilterFun } from '..';
 import FilterFields from './FilterFields';
 
 const Filter = ({ table }) => {
@@ -15,8 +16,8 @@ const Filter = ({ table }) => {
                 (`${tr.getAttribute('data-upin')}`.includes(state.UPIN) &&
                     tr.cells[0].textContent.toLowerCase().includes(state.name))
                     ? tr.removeAttribute('hidden') : tr.setAttribute('hidden', "")
-    
             }
+            availableFilterFun()
         } catch (error) {
             return error.message
         }

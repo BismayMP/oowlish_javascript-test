@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import Filter from "./components/Filter";
 import { AddOnClickAndInitialStyle } from "./utils";
 
-export const table = document.getElementById('doctors').children
-export const availableFilter = document.getElementById('availabilityFilterSelect')
+const table = document.getElementById('doctors').children
+const availableFilter = document.getElementById('availabilityFilterSelect')
 export const doctors = []
 
 fetch('http://localhost:3030/doctors')

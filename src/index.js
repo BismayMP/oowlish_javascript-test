@@ -1,38 +1,36 @@
 import "./index.css";
 import React from "react";
 import ReactDOM from 'react-dom';
-import Filter from "./components/Filter";
+import Filter from "./components/Filter.jsx";
 import { AddOnClickAndInitialStyle } from "./utils";
 
-export const table = document.getElementById('doctors').children
-export const availableFilter = document.getElementById('availabilityFilterSelect')
+const isDevEnv = process.env.NODE_ENV === 'development'
+
+const table = document.getElementById('doctors').children
+const availableFilter = document.getElementById('availabilityFilterSelect')
 export const doctors = []
 
-const handleAvailableFilterChange = (event) => {
-    availableFilterFun(event.target.value)
+const fetchData = () => {
+    fetch('http://localhost:3030/doctors')
+        .then(response => response.json())
+        .then(response => {
+            doctors.push(...response)
+
+        },
+            (error => console.log(error)))
 }
 
-export const availableFilterFun = (value = availableFilter.value) => {
-    let availableList = doctors.filter(res => res.available).map(item => `${item.upin}`)
-    for (let tr of table) {
-        if (value === 'available') {
-            if (!availableList.includes(tr.getAttribute('data-upin')))
-                tr.setAttribute('hidden', '')
-        } else {
-            tr.removeAttribute('hidden')
-        }
-    }
-}
+(isDevEnv) ? fetchData() : doctors.push(
+    { "upin": 202029, "name": "John Doe", "available": false },
+    { "upin": 402910, "name": "Nick Ramsen", "available": true },
+    { "upin": 910291, "name": "Liz Redfield", "available": true },
+    { "upin": 202914, "name": "Javier Garcia", "available": false },
+    { "upin": 394840, "name": "Harry Bone", "available": true },
+    { "upin": 982170, "name": "Kevin Lamkin", "available": true },
+    { "upin": 393920, "name": "Andrew Stuart", "available": true },
+    { "upin": 655942, "name": "Maggie Willians", "available": true }
+)
 
-fetch('http://localhost:3030/doctors')
-    .then(response => response.json())
-    .then(response => {
-        doctors.push(...response)
-
-    },
-        (error => console.log(error)))
-
-availableFilter.onchange = (event) => handleAvailableFilterChange(event)
 AddOnClickAndInitialStyle(table, doctors)
 
-ReactDOM.render(<Filter table={table}></Filter>, document.getElementById('searchContainer'))
+ReactDOM.render(<Filter table={table} availableFilter={availableFilter}></Filter>, document.getElementById('searchContainer'))

@@ -60,19 +60,13 @@ Having that said, good luck and happy coding!
 
 ## Getting started
 
-Getting this app ready will be easy, just need a docker engine that you can get here:
-
-```
-<https://docs.docker.com/get-docker/>
-```
-
-For development and testing proposes, run:
+After download the source code at [https://github.com/BismayMP/oowlish_javascript-test] run:
 
 ```
 yarn install
 ```
 
-in the terminal
+in the terminal, to get all the dependencies you'll need installed
 
 # Running our unit test
 
@@ -90,20 +84,14 @@ To start de development server run :
 yarn start:dev
 ```
 
-# Running our app on production mode
+# Build our app for production mode
 
-First you need to build the image, use the ´´PROD´´ stage for production, running:
-
-```
-docker build -t prod-image .
-```
-
-and then run the recently build image:
+Just run:
 
 ```
-docker run prod-image
+yarn build
 ```
 
 # About the app
 
-This app is using reactjs[https://reactjs.org/] and javascript as main technologies, for testing purpose we use jest[https://jestjs.io/en/] and docker[https://www.docker.com/] for an easy deployment
+This app is using reactjs[https://reactjs.org/] and javascript as main technologies, for testing purpose we use jest[https://jestjs.io/en/]

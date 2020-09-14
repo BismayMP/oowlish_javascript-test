@@ -11,8 +11,7 @@
     "build": "webpack --config webpack.prod.js",
     "start:server": "json-server --watch ./db/data.json --port 3030 --id ./db/ids.json",
     "start:client": "webpack-dev-server --config webpack.dev.js --open",
-    "start:dev": "concurrently --kill-others \"yarn start:server\" \"yarn start:client\"",
-    "start": "yarn build"
+    "start:dev": "concurrently --kill-others \"yarn start:server\" \"yarn start:client\""
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
